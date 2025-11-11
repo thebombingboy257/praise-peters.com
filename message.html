@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Message to King 💖</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    body {
+      background: linear-gradient(120deg, #ff69b4, #ff1493);
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      text-align: center;
+      padding: 40px 20px;
+      min-height: 100vh;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      text-shadow: 0 0 15px #fff;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.1em;
+      margin-bottom: 20px;
+    }
+
+    textarea {
+      width: 90%;
+      max-width: 600px;
+      height: 150px;
+      border: none;
+      border-radius: 15px;
+      padding: 15px;
+      font-size: 1em;
+      outline: none;
+      margin-top: 20px;
+      font-family: inherit;
+      color: #333;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 25px;
+      background: white;
+      color: #ff1493;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #ffe4ec;
+      transform: scale(1.05);
+    }
+
+    .message-box {
+      margin-top: 40px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 15px;
+      padding: 20px;
+      width: 90%;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+      word-wrap: break-word;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 30px;
+      color: #fff;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>💌 Hey Praise 💌</h1>
+  <p>Write a message for King below and press "Send" to share your heart 💞</p>
+
+  <textarea id="message" placeholder="Type your sweet message here..."></textarea><br>
+  <button onclick="sendMessage()">Send Message</button>
+
+  <div class="message-box" id="messageBox"></div>
+
+  <a href="index.html" class="back-link">← Back to Home</a>
+
+  <script>
+    function sendMessage() {
+      const message = document.getElementById('message').value.trim();
+      if (message) {
+        localStorage.setItem('praiseMessage', message);
+        displayMessage();
+        document.getElementById('message').value = '';
+      }
+    }
+
+    function displayMessage() {
+      const msg = localStorage.getItem('praiseMessage');
+      if (msg) {
+        document.getElementById('messageBox').innerHTML = `
+          <h3>💬 Praise’s Message:</h3>
+          <p>${msg}</p>
+        `;
+      }
+    }
+
+    window.onload = displayMessage;
+  </script>
+</body>
+</html>
